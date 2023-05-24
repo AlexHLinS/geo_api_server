@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import uvicorn
 
 from modules.geoutils import geocode
 
@@ -28,3 +29,6 @@ async def coords(address:str):
         "status": "error",
         "message": f"Can\'t geocode coordinates from given address: {address}"
         }
+    
+if __name__ == '__main__':
+    uvicorn.run(app, host="0.0.0.0", port=8000)
